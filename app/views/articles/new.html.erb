@@ -1,0 +1,45 @@
+
+<div class="container">
+<h1 class="text-center mt-5">Create Article</h1>
+
+
+<%if @article.errors.any?%>
+    <div class="alert alert-danger" role="alert">
+        The following errors prevent the article from being saved
+        <ul>
+            <%@article.errors.full_messages.each do |msg|%>
+                <li><%=msg%></li>
+            <%end%>
+        </ul>
+    </div>
+<%end%>
+
+
+<%= form_with scope: :article, url: articles_path, data: {turbo: false} ,local: true, class: "w-90 m-auto bg-success bg-gradient rounded p-5 text-white mt-5 mb-5 shadow" do |f|%>
+    <div class="row">
+    <div class="col-3">
+        <%= f.label :title%>
+    </div>
+    <div class="col-9">
+        <%= f.text_field :title, class:"w-100 rounded border-0"%>  
+    </div>
+    
+    
+    </div>
+    <div class="row mt-5">
+        <div class="col-3">
+            <%= f.label :description%>    
+        </div>
+        <div class="col-9">
+            <%= f.text_area :description, class:"w-100 rounded border-0" %>
+        </div>
+    </div>
+    <div class="text-center mt-5">
+    <%= f.submit "Create Article", class:"p-2 btn btn-outline-light"%>
+    </div>
+<%end%>
+
+<div class="text-center">
+    <%=link_to "[Cancel and go back]", articles_path, class: "text-decoration-none"%>
+</div>
+</div>

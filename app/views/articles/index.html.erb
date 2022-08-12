@@ -1,0 +1,18 @@
+
+<div class="container">
+<h1 class="text-center mt-2 mb-2">Articulos</h1>
+<%@articles.each do |article|%>
+    <div class="w-50 m-auto shadow text-center p-3 rounded">
+        <p class="">Created by Francisco Figueroa</p>
+        <h1><%=article.title%></h1>
+        <p><%=article.description%></p>
+        <%=link_to 'Show', article_path(article), class: "btn btn-outline-success"%>
+        <%=link_to 'Delete', article_path(article), class: "btn btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
+        <%=link_to 'Edit', edit_article_path(article), class: "btn btn-outline-info"%>
+    </div>
+<%end%>
+
+
+    <%=link_to "New Article", new_article_path, class: "btn btn-primary  justify-content-end" %>
+
+</div>
